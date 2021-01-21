@@ -1,6 +1,7 @@
 package com.example.spring_practive.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class TestController {
@@ -14,10 +15,13 @@ public class TestController {
     }
 
     //view(template)가 아니라 데이터를 반환해야한다면 @Respnesebody
+    @ResponseBody
     @RequestMapping(value ="/returndata")
     public String returndata(){
         String data = "testdata";
         return data;
-    }
-        
-}
+    }    
+}   
+
+    
+
