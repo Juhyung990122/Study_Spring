@@ -11,7 +11,7 @@ public class TestRestController{
 
     @RequestMapping(value="/returndata",method = RequestMethod.GET)
     public String restTestValue(){
-        String restdata = "REST data";
+        String restdata = "Happy Birthday Guinness";
         return restdata;
     }
 }
