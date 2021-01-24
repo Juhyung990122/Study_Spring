@@ -1,10 +1,12 @@
 package com.example.spring_practive.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import java.util.ArrayList;
+import java.util.List;
+
 //import org.springframework.web.bind.annotation.ResponseBody;
-//import org.springframework.web.servlet.ModelAndView;
-//import java.util.ArrayList;
-//import java.util.List;
+
 
 
 @Controller
@@ -30,6 +32,20 @@ public class TestController {
     public String test(){ 
         return "test"; 
     }
+
+    @RequestMapping("/mv")
+    public ModelAndView mvtest(){
+        ModelAndView mv = new ModelAndView();
+        List<String> listTest = new ArrayList<String>();
+        listTest.add("data1");
+        listTest.add("data2");
+        listTest.add("data3");
+        mv.addObject("listTest", listTest); //뷰로 보낼 데이터(변수이름,실제데이터)
+        mv.addObject("objecttest", "테스트용오브젝트"); //뷰로 보낼 데이터
+        mv.setViewName("mvtest"); //불러올탬플릿
+        return mv;
+    }
+    
  
 }   
 
