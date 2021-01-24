@@ -1,7 +1,11 @@
 package com.example.spring_practive.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+//import org.springframework.web.bind.annotation.ResponseBody;
+//import org.springframework.web.servlet.ModelAndView;
+//import java.util.ArrayList;
+//import java.util.List;
+
 
 @Controller
 public class TestController {
@@ -15,12 +19,18 @@ public class TestController {
     }
 
     //view(template)가 아니라 데이터를 반환해야한다면 @Respnesebody
-    @ResponseBody
+    /*@ResponseBody
     @RequestMapping(value ="/returndata")
     public String returndata(){
         String data = "testdata";
         return data;
-    }    
+    } */ 
+
+    @RequestMapping("/test") 
+    public String test(){ 
+        return "test"; 
+    }
+ 
 }   
 
     
