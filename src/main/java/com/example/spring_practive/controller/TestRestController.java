@@ -2,6 +2,7 @@ package com.example.spring_practive.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,8 @@ import java.util.Optional;
 
 //요즘은 @RestController로 위의 Responsebody를 대체한다. Responsebody는 자동으로 활성화
 @RestController
+@RequiredArgsConstructor
+@RequestMapping("/v1")
 public class TestRestController{
 
     @RequestMapping(value="/returndata",method = RequestMethod.GET)
@@ -40,7 +43,7 @@ public class TestRestController{
         return post.get();
     }
 
-    @PostMapping("/post/{id}")
+    @PostMapping("/post")
     public Post updatePost(@PathVariable String id, @RequestBody Post newPost){
         Long postID = Long.parseLong(id);
         Optional<Post> post = postRepository.findById(postID);

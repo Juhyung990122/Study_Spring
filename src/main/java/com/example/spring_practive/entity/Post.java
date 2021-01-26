@@ -3,11 +3,19 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import lombok.*;
 
-@Entity
+@Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity(name="Post")
 public class Post {
+    //이것이 프라미머리키!
     @Id
+    //키값 자동생성전략설정(디폴트는 AUTO) => AUTO_INCREMETN사용했으므로 IDENTITY 사용
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    //@Column으로는 속성값(널허용 유니크...) 설정가능
     private Long Id;
     private String title;
     private String content;
