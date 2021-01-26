@@ -44,4 +44,22 @@ maven package
 컨트롤러에서 모델값 조작 -> jsp로 넘겨서 화면출력 까지는 이해가 되는데
 모델이 당최 어케  돌아가는건지 이해가 안된다. 
 파라미터값 넣으면 데이터 만들어지긴하던데.. 모델 선언도 안했는데 뭔원리로 만들어지는거지?
-어차피 jpa쓰긴할건데./..흠
+어차피 jpa쓰긴할건데./..흠 -> 
+
+- JPA 에러로그
+could not open jpa entitymanager for transaction; nested exception is org.hibernate.exception.jdbcconnectionexception: unable to acquire jdbc connection
+-> 참고자료: https://woowabros.github.io/experience/2020/02/06/hikaricp-avoid-dead-lock.html
+
+org.springframework.beans.factory.beancreationexception: error creating bean with name 'entitymanagerfactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/hibernatejpaconfiguration.class]: invocation of init method failed; nested exception is org.hibernate.service.spi.serviceexception: unable to create requested service [org.hibernate.engine.jdbc.env.spi.jdbcenvironment]
+-> application.properties쪽 설정오류로 인한 에러
+
+
+-maven vs gradle
+난 첫시작환경을 maven으로 했는데 튜토리얼을 진행하다보니 gradle이 더 많더라
+어떤 차이점이 있는가 봤더니 maven은 ant의 불편함을 해소한 빌드스크립트 및 의존성관리툴? 이었고,
+gradle은 maven과 ant의 장점만을 쏙 뽑아서 만든 빌드도구ㅇㅇ
+xml을 사용하면서 개인적으로 가독성이 나쁘단 생각을 했었는데 gradle에서는 이런 가독성을 해결하고
+의존관계가 복잡한 프로젝트를 설정할떄 좀 더 편리하게 했다고 한다. 또한 빌드 속도가 메이븐부도 100배는 빠르다니...(핫데이터 형식으로 빌드정보를 관리해서 좀더 빠르게 접근+반복작업 감소 / 변경된
+클래스만 다시 컴파일한다고 함. 라이브러리 인터페이스가 변경되지 않으면 Gradle내의 스마트 경로 분석기가 재컴파일을 막는게 원리.)
+ 이제부터 할 spring 게시판 플젝은 Gradle을 사용해서 할 예정ㅎㅅㅎ
+
